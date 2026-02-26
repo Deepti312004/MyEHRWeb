@@ -8,6 +8,9 @@ import Mainlayout from "./Layout/Mainlayout";
 import ReceptionDashboard from "./Pages/ReceptionDashboard";
 import DoctorDashboard from "./Pages/DoctorDashboard";
 import NurseDashboard from "./Pages/NurseDashboard";
+import PatientRegistration from "./Pages/Reception/PatientRegistration";
+import PatientList from "./Pages/Reception/PatientList";
+import ScheduleAppointment from "./Pages/Reception/ScheduleAppointment";
 
 function App() {
   return (
@@ -22,6 +25,19 @@ function App() {
             ></Route>
             <Route path="/dashboard/doctor" element={<DoctorDashboard />} />
             <Route path="/dashboard/nurse" element={<NurseDashboard />} />
+
+            <Route
+              path="/dashboard/reception/registration"
+              element={<PatientRegistration />}
+            ></Route>
+            <Route
+              path="/dashboard/reception/patientList"
+              element={<PatientList />}
+            ></Route>
+            <Route
+              path="/dashboard/reception/schedule"
+              element={<ScheduleAppointment />}
+            ></Route>
           </Route>
         </Routes>
       </BrowserRouter>

@@ -24,8 +24,9 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import InfoIcon from "@mui/icons-material/Info";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 const Navbar = () => {
+  const navigate = useNavigate();
   const [openDrawer, setOpenDrawer] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -156,7 +157,9 @@ const Navbar = () => {
                 display: { xs: "none", md: "flex" },
               }}
             >
-              <Button sx={{ color: textColor }}>Home</Button>
+              <Button onClick={() => navigate("/")} sx={{ color: textColor }}>
+                Home
+              </Button>
               <Button sx={{ color: textColor }}>About Us</Button>
               <Button sx={{ color: textColor }}>Services</Button>
               <Button sx={{ color: textColor }}>Book an Appointment</Button>

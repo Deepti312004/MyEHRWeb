@@ -6,7 +6,7 @@ const Mainlayout = () => {
   return (
     <>
       <Navbar />
-
+      {/* <div style={{ marginTop: "100px" }}></div> */}
       <Outlet />
     </>
   );
