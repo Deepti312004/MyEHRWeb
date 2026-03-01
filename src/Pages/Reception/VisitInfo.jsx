@@ -32,7 +32,7 @@ const VisitInfo = () => {
   return (
     <>
       <Box sx={{ my: 3 }}>
-        <Typography>Visit Info</Typography>
+        <Typography variant="body1">Visit Info</Typography>
         <Box sx={{ my: 3 }}>
           <Grid container rowSpacing={3} columnSpacing={2}>
             <Grid size={{ xs: 12, md: 6 }}>

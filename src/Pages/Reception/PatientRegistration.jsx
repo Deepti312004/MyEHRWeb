@@ -8,6 +8,13 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import VisitInfo from "./VisitInfo";
+import PatientDemograhic from "./PatientDemographics";
+import EmergencyContact from "./EmergencyContact";
+import IdVerification from "./IdVerification";
+import MedicalHistory from "./MedicalHistory";
+import ImmunizationHistory from "./ImmunizationHistory";
+import SocialHistory from "./SocialHistory";
+import FamilyHistory from "./FamilyHistory";
 
 const PatientRegistration = () => {
   const steps = [
@@ -37,11 +44,56 @@ const PatientRegistration = () => {
       case 0:
         return (
           <Box>
-            <Typography sx={{ fontSize: "20px", fontWeight: "400" }}>
-              <VisitInfo />
-            </Typography>
+            <VisitInfo />
           </Box>
         );
+      case 1:
+        return (
+          <Box>
+            {/* <Typography sx={{ fontSize: "20px", fontWeight: "400" }}> */}
+            <PatientDemograhic />
+            {/* </Typography> */}
+          </Box>
+        );
+      case 2:
+        return (
+          <Box>
+            <EmergencyContact />
+          </Box>
+        );
+
+      case 3:
+        return (
+          <Box>
+            <IdVerification />
+          </Box>
+        );
+
+        case 4:
+          return(
+            <Box>
+              <MedicalHistory/>
+            </Box>
+          );
+          case 5:
+            return(
+              <Box>
+                    <SocialHistory/>
+      
+              </Box>
+            );
+            case 6:
+              return(
+                <Box>
+                      <ImmunizationHistory/>
+                </Box>
+              );
+              case 7:
+                return(
+                <Box>
+                    <FamilyHistory/>
+                </Box>
+              );
       default:
         return null;
     }
@@ -75,7 +127,7 @@ const PatientRegistration = () => {
             variant="contained"
             onClick={handleBack}
             disabled={activeStep === 0}
-            sx={{ bgcolor: "#5f5e5e", color: "#fff" }}
+            sx={{ bgcolor: "#056aad", color: "#fff" }}
           >
             Back
           </Button>
@@ -91,7 +143,7 @@ const PatientRegistration = () => {
             <Button
               variant="contained"
               onClick={handleNext}
-              sx={{ bgcolor: "#5f5e5e", color: "#fff" }}
+              sx={{ bgcolor: "#056aad", color: "#fff" }}
             >
               Next
             </Button>
