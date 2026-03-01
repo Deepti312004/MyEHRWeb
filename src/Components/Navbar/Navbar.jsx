@@ -165,10 +165,10 @@ const Navbar = () => {
               <Button sx={{ color: textColor }}>Book an Appointment</Button>
               <Button
                 sx={{
-                  // color: scrolled ? "#fff" : "#fff",
+                  // color: scrolled ? "#fff" : "#fff","#2d21d1"  "#056aad"
                   color: showCta ? "#fff" : textColor,
                   marginLeft: "20px",
-                  backgroundColor: showCta ? "#2d21d1" : "transparent",
+                  backgroundColor: showCta ?  "#2d21d1": "transparent",
                   borderRadius: showCta ? "3px" : "0px",
                   border: "none",
                   outline: "none",
