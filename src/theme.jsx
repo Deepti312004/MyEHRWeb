@@ -10,7 +10,7 @@ export const theme = createTheme({
           height: "40px",
         },
         input: {
-          marginTop: 0,
+          marginTop: "10px",
           padding: "8px 15px",
           textAlign: "left",
           display: "flex",
@@ -22,10 +22,44 @@ export const theme = createTheme({
         },
       },
     },
+
+    MiuInputBase:{
+styleOverrides: {
+        root: {
+          borderRadius: 8,
+          fontSize: "0.75rem",
+          height: "40px",
+        },
+        input:{
+           marginTop: "10px",
+          padding: "8px 15px",
+          textAlign: "left",
+          display: "flex",
+          justifyContent: "flex-start",
+          alignItems: "center",
+          boxSizing: "border-box",
+          fontSize: "0.75rem",
+          height: "40px",
+        },
+
+        inputMultiline:{
+           marginTop: "10px",
+          padding: "8px 15px",
+          textAlign: "left",
+          display: "flex",
+          justifyContent: "flex-start",
+          alignItems: "center",
+          boxSizing: "border-box",
+          fontSize: "0.75rem",
+          height: "40px",
+        },
+
+    },
+  },
     MuiSelect: {
       styleOverrides: {
         select: {
-          marginTop: 0,
+          marginTop: "0px",
           height: "30px",
           padding: "5px 15px",
           fontSize: "0.75rem",

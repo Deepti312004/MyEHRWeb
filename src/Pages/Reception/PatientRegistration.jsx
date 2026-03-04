@@ -6,7 +6,7 @@ import {
   Stepper,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import VisitInfo from "./VisitInfo";
 import PatientDemograhic from "./PatientDemographics";
 import EmergencyContact from "./EmergencyContact";
@@ -15,8 +15,11 @@ import MedicalHistory from "./MedicalHistory";
 import ImmunizationHistory from "./ImmunizationHistory";
 import SocialHistory from "./SocialHistory";
 import FamilyHistory from "./FamilyHistory";
+import { useNavigate } from "react-router-dom";
+const generateMRN=()=>`MRN-${new Date().getFullYear()}-${Date.now().toString().slice(-6)}`
 
 const PatientRegistration = () => {
+  const navigate=useNavigate();
   const steps = [
     "Visit Type",
     "Patient Demographics",
@@ -27,6 +30,48 @@ const PatientRegistration = () => {
     "Immunization History",
     "Family History",
   ];
+
+  const[formData, setFormData]=useState({
+
+
+   mrn: "",
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    suffix: "",
+    dob: "",
+    age: "",
+    gender: "",
+    maritalStatus: "",
+    prefferedLang: "",
+    ssn: "",
+    phone: "",
+    homePhone: "",
+    workPhone: "",
+    email: "",
+    address1: "",
+    address2: "",
+    city: "",
+    state: "",
+    postalCode: "",
+    country: "",
+    employer: "",
+    officeEmp: "",
+     status: "Registered",
+   visitType:"",
+   reasonForVisit:"",
+
+ 
+
+  });
+
+  
+  useEffect(()=>{
+  setFormData((prev)=>({
+    ...prev, mrn:generateMRN(),
+  }));
+  },[]);
+
   const [activeStep, setActiveStep] = useState(0);
   const handleNext = () => {
     setActiveStep((prev) => prev + 1);
@@ -36,22 +81,41 @@ const PatientRegistration = () => {
   };
 
   const handleSubmit = () => {
-    alert("Successfully submitted");
+  if(!formData.firstName || ! formData.lastName){
+     alert("First name and last name required"); 
+     return;
+  }
+  const newPatient={
+  id:Date.now(),
+ patient:`${formData.firstName} ${formData.lastName}`, ...formData,
+
+lastVisit:new Date().toLocaleDateString(),
+
+};
+
+const existing=JSON.parse(localStorage.getItem("receptionPatients")) || [];
+
+localStorage.setItem("receptionPatients", JSON.stringify([...existing, newPatient]))
+alert("Patient RegisteredSuccessfully");
+navigate("/dashboard/reception");
+   // alert("Successfully submitted");
   };
+
+
 
   const renderActiveStep = (step) => {
     switch (step) {
       case 0:
         return (
           <Box>
-            <VisitInfo />
+            <VisitInfo formData={formData} setFormData={setFormData}/>
           </Box>
         );
       case 1:
         return (
           <Box>
             {/* <Typography sx={{ fontSize: "20px", fontWeight: "400" }}> */}
-            <PatientDemograhic />
+            <PatientDemograhic formData={formData} setFormData={setFormData} />
             {/* </Typography> */}
           </Box>
         );

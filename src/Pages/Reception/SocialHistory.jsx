@@ -40,7 +40,7 @@ const SocialHistory = () => {
         <Grid container rowSpacing={3} columnSpacing={2}>
           <Grid size={{ xs: 12, md: 4 }}>
             <TextField
-              value={formData.Smoking}
+              value={formData.Smoking ?? ""}
               onChange={handleChange("Smoking")}
               label="Smoking"
               placeholder="Smoking"
@@ -57,7 +57,7 @@ const SocialHistory = () => {
           </Grid>
           <Grid size={{ xs: 12, md: 4 }}>
             <TextField
-              value={formData.AlcoholUse}
+              value={formData.AlcoholUse ??""}
               onChange={handleChange("AlcoholUse")}
               label="Alcohol Use"
               placeholder="Alcohol Use"
@@ -74,8 +74,8 @@ const SocialHistory = () => {
           </Grid>
           <Grid size={{ xs: 12, md: 4 }}>
             <TextField
-              value={formData.RecreationalDrugUse}
-              onChange={handleChange(" RecreationalDrugUse")}
+              value={formData.RecreationalDrugUse ??  ""}
+              onChange={handleChange("RecreationalDrugUse")}
               label=" Recreational Drug Use"
               placeholder=" Recreational Drug Use"
               select
@@ -97,7 +97,7 @@ const SocialHistory = () => {
               size="medium"
               placeholder="Exercise habits, diet, etc."
               value={formData.AdditionalSocialHistory}
-              onChange={handleChange(" Additional Social History")}
+              onChange={handleChange("AdditionalSocialHistory")}
             ></TextField>
           </Grid>
         </Grid>

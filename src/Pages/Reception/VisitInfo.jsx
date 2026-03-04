@@ -1,33 +1,34 @@
 import { Box, Grid, MenuItem, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 
-const VisitInfo = () => {
-  const [formData, setformData] = useState({
-    visitType: "",
-    reasonForVisit: "",
-  });
+const VisitInfo = ({formData, setFormData}) => {
+  // const [formData, setformData] = useState({
+  //   visitType: "",
+  //   reasonForVisit: "",
+  // });
 
   const handleChange = (field) => (event) => {
-    setformData({ ...formData, [field]: event.target.value });
+    setFormData((prev)=>({ ...prev, [field]: event.target.value }));
   };
+
 
   const visitType = [
     {
       id: 1,
-      name: "New Visit",
+      name: "New Visit"
     },
-    { id: 2, name: "Follow-up" },
+    { id: 2, name: "Follow Up" },
     {
       id: 3,
-      name: "Walk-in",
+      name: "Walk-In"
     },
-    { id: 4, name: "Urgent Drive" },
+
     {
-      id: 5,
-      name: "Emergency",
+      id: 4,
+      name: "Emergency"
     },
-    { id: 6, name: "TeleHealth" },
-    { id: 7, name: "Lab Review Only" },
+    { id: 5, name: "TeleHealth" },
+    { id: 6, name: "Lab Review Only" },
   ];
   return (
     <>
@@ -41,7 +42,7 @@ const VisitInfo = () => {
                 required
                 fullWidth
                 label="Visit Type"
-                value={formData.visitType}
+                value={formData.visitType ?? ""}
                 variant="outlined"
                 onChange={handleChange("visitType")}
               >
@@ -58,7 +59,7 @@ const VisitInfo = () => {
                 variant="outlined"
                 label="Reason for Visit"
                 fullWidth
-                value={formData.reasonForVisit}
+                value={formData.reasonForVisit ?? ""}
                 onChange={handleChange("reasonForVisit")}
               ></TextField>
             </Grid>

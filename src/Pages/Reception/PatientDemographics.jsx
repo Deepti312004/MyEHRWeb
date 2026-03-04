@@ -13,35 +13,41 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import React, { useState } from "react";
 // import Divider from "@mui/material/Divider";
 
-const PatientDemograhic = () => {
+const PatientDemograhic = ({formData, setFormData}) => {
   // const [value, setValue] = useState<null | HTMLInputElement>(null);
-  const [formData, setFormData] = useState({
-    mrn: "MRN-2512-000001",
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    suffix: "",
-    dob: "",
-    age: "",
-    gender: "",
-    maritalStatus: "",
-    prefferdLang: "",
-    ssn: "",
-    phone: "",
-    homePhone: "",
-    workPhone: "",
-    email: "",
-    address1: "",
-    address2: "",
-    city: "",
-    state: "",
-    postalCode: "",
-    country: "",
-    employer: "",
-    officeEmp: "",
-  });
-  const handleChange = (field) => (event) => {
-    setFormData({ ...formData, [field]: event.target.value });
+  // const [formData, setFormData] = useState({
+  //   mrn: "MRN-2512-000001",
+  //   firstName: "",
+  //   middleName: "",
+  //   lastName: "",
+  //   suffix: "",
+  //   dob: "",
+  //   age: "",
+  //   gender: "",
+  //   maritalStatus: "",
+  //   prefferdLang: "",
+  //   ssn: "",
+  //   phone: "",
+  //   homePhone: "",
+  //   workPhone: "",
+  //   email: "",
+  //   address1: "",
+  //   address2: "",
+  //   city: "",
+  //   state: "",
+  //   postalCode: "",
+  //   country: "",
+  //   employer: "",
+  //   officeEmp: "",
+  // });
+  // const handleChange = (field) => (event) => {
+  //   setFormData({ ...formData, [field]: event.target.value });
+  // };
+
+   const handleChange=(field)=>(e)=>{
+  setFormData((prev)=>({
+    ...prev, [field]:e.target.value,
+  }));  
   };
 
   const States = [
@@ -176,7 +182,10 @@ const PatientDemograhic = () => {
               <DatePicker
                 label="DD-MM-YYYY"
                 onChange={(newValue) =>
-                  setFormData({ ...formData, dob: newValue })
+                  // setFormData({ ...formData, dob: newValue })
+                  setFormData((prev)=>({
+...prev, dob:newValue?newValue.format("YYYY-MM-DD"):"",
+                  }))
                 }
                 slotProps={{ textField: { fullWidth: true } }}
               />
@@ -198,8 +207,9 @@ const PatientDemograhic = () => {
               required
               fullWidth
               label="Gender"
-              value={formData.gender}
+              value={formData.gender ?? ""}
               onChange={handleChange("gender")}
+              
             >
               {/* onChange={(newValue)=>setFormData({...FormData,gender:newValue})} slotProps={{textField:{fullWidth:true}}} */}
               <MenuItem value="Female" label="Female">
@@ -220,8 +230,9 @@ const PatientDemograhic = () => {
               variant="outlined"
               fullWidth
               label="Marital Status"
-              value={formData.maritalStatus}
+              value={formData.maritalStatus ?? ""}
               onChange={handleChange("maritalStatus")}
+            
             >
               <MenuItem value="Single" label="Single">
                 Single
@@ -242,8 +253,9 @@ const PatientDemograhic = () => {
               fullWidth
               variant="outlined"
               label="Preferred language"
-              value={formData.prefferdLang}
+              value={formData.prefferedLang ?? ""}
               onChange={handleChange("prefferedLang")}
+              
             >
               {lang.map((lan) => (
                 <MenuItem value={lan.name} label={lan.name}>
@@ -356,8 +368,9 @@ const PatientDemograhic = () => {
               fullWidth
               variant="outlined"
               label="State"
-              value={formData.state}
+              value={formData.state ?? ""}
               onChange={handleChange("state")}
+              
             >
               {States.map((state) => (
                 <MenuItem value={state.name} label={state.name}>
@@ -382,8 +395,10 @@ const PatientDemograhic = () => {
               variant="outlined"
               fullWidth
               label="Country"
-              value={formData.country}
+              value={formData.country ?? ""}
               onChange={handleChange("country")}
+              
+
             >
               {Country.map((country) => (
                 <MenuItem value={country.name} label={country.name}>
